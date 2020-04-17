@@ -4,7 +4,7 @@
 Full stack cannabis recipe web application. Optimizations include user ability to login, like their favorite recipes, and submit personal recipes to the list with an image. Users will also be able to browse the blog, and learn about the medicinal purposes with cannabis intergrated with food.
 
 ![ screenshot of application](https://github.com/asiahbennettdev/Demo-day-draft-one/blob/master/public/img/herbs.png)
-![ screenshot of application](https://github.com/asiahbennettdev/Demo-Cannabliss/blob/master/public/img/aB.png)
+![ screenshot of application](https://github.com/asiahbennettdev/Demo-Cannabliss/blob/master/public/img/screen.png)
 
 ## Installation
 
