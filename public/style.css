@@ -1,0 +1,27 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+}
+img{
+  height: 200px;
+}
+.feedPost {
+  border-radius: 5px solid black;
+  /* height: 1000px; */
+  width: 100%;
+  float left;
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  background-color: antiquewhite;
+}
+
+.feedPost ul li span {
+  line-height: 3;
+  font-size: 14px;
+}
+.feedPost ul li img {
+  height: 400px;
+  border-radius: 10px;
+  /* width: 40%; */
+}

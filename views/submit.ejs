@@ -1,0 +1,131 @@
+<%- include('header'); -%>
+<!-- demo-day start-->
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-3 col-lg-2">
+                        <div class="logo">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-7">
+                        <div class="main-menu white_text  d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                  <li><a href="/">Home</a></li>
+                                  <li><a href="/login">Login</a></li>
+                                  <li><a href="/signup">Signup</a></li>
+                                  <li><a href="/blog">Blog</a></li>
+                                  <li><a href="/recipes">Recipes</a></li>
+                                  <li><a href="/faq">FAQ</a></li>
+                                  <li><a href="/feed">Submit</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                        <div class="search_icon">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header-end -->
+<!-- bradcam_area  -->
+<div class="bradcam_area breadcam_bg_3">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text text-center">
+                    <h3>Submit Recipe</h3>
+                    <h4 class="subHead">Share your favorite cannabis foods</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /bradcam_area  -->
+<!-- ================ submission section start ================= -->
+<section class="contact-section section_padding">
+<div class="container">
+  <div class="d-none d-sm-block mb-5 pb-4">
+    <!-- <div id="map" style="height: 480px;"></div> -->
+    <img src="img/banner/pan1.jpg" alt="your recipe image" style="border-radius: 5px; height:350px;">
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="contact-title">Recipe Title</h2>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <input class="form-control" name="caption" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder = 'Recipe name'>
+      </div>
+    </div>
+    <div class="col-12">
+      <h2 class="contact-title">Instructions</h2>
+    </div>
+    <div class="col-lg-8">
+      <form class="form-contact contact_form" action="/qpPost" method="post" id="contactForm" novalidate="novalidate" enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+                <textarea class="form-control w-100" name="description" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder = 'Type text here'></textarea>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="col-12">
+              <h2 class="contact-title">Ingredients</h2>
+            </div>
+            <div class="form-group">
+              <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder = 'Enter Items'>
+            </div>
+          </div>
+          <div class="col-12">
+            <h2 class="contact-title">Upload Photo</h2>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <input class="form-control" name="file-to-upload" id="" type="file" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" placeholder = 'URL'>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <button type="submit" value="upload" class="button button-contactForm btn_4 boxed-btn" style="margin-top:-10px;">Submit Recipe</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-4">
+      <div class="media contact-info">
+        <span class="contact-info__icon"><i class="ti-home"></i></span>
+        <div class="media-body">
+          <h3>Buttonwood, California.</h3>
+          <p>Rosemead, CA 91770</p>
+        </div>
+      </div>
+      <div class="media contact-info">
+        <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+        <div class="media-body">
+          <h3>00 (440) 9865 562</h3>
+          <p>Mon to Fri 9am to 6pm</p>
+        </div>
+      </div>
+      <div class="media contact-info">
+        <span class="contact-info__icon"><i class="ti-email"></i></span>
+        <div class="media-body">
+          <h3>support@colorlib.com</h3>
+          <p>Send us your query anytime!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- demo-day end -->
+<%- include('footer'); -%>

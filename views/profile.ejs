@@ -1,0 +1,145 @@
+<%- include('header'); -%> <!-- header info (including style) from header.ejs -->
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-3 col-lg-2">
+                        <div class="logo">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-7">
+                        <div class="main-menu white_text  d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                  <li><a href="/">Home</a></li>
+                                  <li><a href="/login">Login</a></li>
+                                  <li><a href="/signup">Signup</a></li>
+                                  <li><a href="/blog">Blog</a></li>
+                                  <li><a href="/recipes">Recipes</a></li>
+                                  <li><a href="/faq">FAQ</a></li>
+                                  <li><a href="/feed">Submit</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                        <div class="search_icon">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header-end -->
+!-- bradcam_area  -->
+<div class="bradcam_area breadcam_bg_5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text text-center">
+                    <h3>Submit Recipe</h3>
+                    <h4 class="subHead">Share your favorite cannabis foods</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="container">
+
+      <div class="page-header text-center">
+          <h1>My Profile Recipe Page</h1>
+      </div>
+
+      <div class="row">
+
+          <!-- LOCAL INFORMATION -->
+          <!-- <div class="col-sm-6">
+              <div class="well">
+                  <h3><img src="<%= user.profileImg %>" alt=""> Local</h3>
+
+                  <% if (user.local.email) { %>
+                      <p>
+                          <strong>id</strong>: <%= user._id %><br>
+                          <strong>email</strong>: <%= user.local.email %><br>
+                          <strong>password</strong>: <%= user.local.password %>
+                      </p>
+                      <span>Change profile image</span>
+                      <form action="/up" enctype="multipart/form-data" method="post">
+                        <input type="file" name="file-to-upload" placeholder="Choose Profile Pic">
+                        <input type="submit" value="Upload">
+                      </form>
+                      <a href="/unlink/local" class="btn btn-default">Delete Profile</a>
+                  <% } else { %>
+                      <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                  <% } %>
+                  <a href="/logout" class="btn btn-default btn-sm">Logout</a> -->
+                  <!-- profile IMAGE UPLOAD -->
+
+              </div>
+          </div>
+          <section class="contact-section section_padding">
+          <div class="col-sm-6">
+            <!-- <h3>My Uploaded Recipe Posts</h3> -->
+            <ul>
+            <% for(var i=0; i<posts.length; i++) {%>
+              <li data-id="<%= posts[i]._id%>">
+                <a href="/post/<%= posts[i]._id%>">
+                  <img src="<%= posts[i].imgPath%>">
+                </a>
+                <span><%= posts[i].caption %></span>
+                <span><%= posts[i].likes %></span>
+                <p><%= posts[i].description %></p>
+                <p><%= posts[i].ingredients %></p>
+                <span><i class="fa fa-heart" aria-hidden="true"></i></span>
+                <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+              </li>
+            <% } %>
+            </ul>
+          <!-- <h2>Add a post</h2> -->
+          <!-- IMAGE UPLOAD -->
+          <form action="/qpPost" enctype="multipart/form-data" method="post">
+            <div class="col-12">
+              <h4 class="contact-title subHeader">Recipe Title</h4>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" name="caption" value="" placeholder="Post Title">
+                <!-- <input class="form-control" name="caption" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder = 'Recipe name'> -->
+              </div>
+
+             <div class="col-12">
+               <h2 class="contact-title subHeader wawa">Instructions</h2>
+             </div>
+             <div class="form-group">
+                <textarea name="description" rows="9" cols="80" placeholder="Instructions"></textarea>
+                 <!-- <textarea class="form-control w-100" name="description" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder = 'Type text here'></textarea> -->
+             </div>
+
+             <!-- <input type="text" name="description" value="" placeholder="Description"> -->
+             <div class="col-12">
+               <h2 class="contact-title subHeader wawa">Ingredients</h2>
+             </div>
+             <div class="form-group">
+               <textarea type="text" name="ingredients" value=""rows="9" cols="80" placeholder="Ingredients"></textarea>
+               <!-- <input type="text" name="ingredients" value="" placeholder="Ingredients"> -->
+               <!-- <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder = 'Enter Items'> -->
+             </div>
+
+             <div class="col-12">
+               <h2 class="contact-title subHeader wawa">Upload Photo</h2>
+             </div>
+             <input type="file" name="file-to-upload">
+             <input type="submit" value="Upload">
+           </form>
+  </div>
+  </section>
+
+
+<%- include('footer'); -%>
+<!-- footer info (including script and closing html tag) from footer.ejs -->
