@@ -5,6 +5,7 @@ Full stack cannabis recipe web application. Optimizations include user ability t
 
 
 ![ screenshot of application](https://github.com/asiahbennettdev/Demo-Cannabliss/blob/master/public/img/screen.png)
+![ screenshot of application](https://github.com/asiahbennettdev/Demo-day-draft-one/blob/master/public/img/herbs.png)
 
 ## Installation
 
