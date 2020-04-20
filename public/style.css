@@ -25,3 +25,10 @@ img{
   border-radius: 10px;
   /* width: 40%; */
 }
+div.recepies_info ul li img {
+  height: 300px;
+  border-radius: 10px;
+}
+div.recepies_text p {
+  margin-left: 70px;
+}

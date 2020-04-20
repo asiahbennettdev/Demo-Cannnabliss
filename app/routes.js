@@ -82,7 +82,7 @@ app.get('/post/:zebra', function(req, res) {  //  /:zebra = query param
 });
 
 //Create Post =========================================================================
-app.post('/qpPost', upload.single('file-to-upload'), (req, res, next) => {  //one picture to post   //next????
+app.post('/cannaPost', upload.single('file-to-upload'), (req, res, next) => {  //one picture to post   //next????
   let uId = ObjectId(req.session.passport.user) // uId === the individual
   db.collection('posts').save({posterId: uId, caption: req.body.caption, likes: 0, imgPath: 'images/uploads/' + req.file.filename, description: req.body.description, ingredients: req.body.ingredients}, (err, result) => {
     if (err) return console.log(err)
