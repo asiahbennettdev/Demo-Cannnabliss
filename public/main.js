@@ -20,7 +20,7 @@ Array.from(likes).forEach(function(element) {
             '_id': _id,
             'caption': caption,
             'fave': "",
-            'following': "",
+            'following': followingId,
             'follow': "false"
           })
         })

@@ -44,9 +44,46 @@ app.get('/terpene', function(req, res) {
 app.get('/infusion', function(req, res) {
     res.render('infusion.ejs');
 });
-app.get('/favorites', function(req, res) {
-    res.render('favorites.ejs');
+app.get('/favorites', isLoggedIn, function(req, res) {
+    let uId = ObjectId(req.session.passport.user).toString()
+    // console.log(uId, "ID")  //uId = unique id from passport
+    db.collection('posts').find().toArray((err, result) => {   //posterId is uId
+      if (err) return console.log(err)
+      let favorites = result
+      function favoriteCheck(followArr){
+        // console.log(followArr, "array")
+        let resultFollow
+        let saved = followArr.forEach(follower => {
+          // console.log(follower.followerId, "followID")
+          // console.log(typeof uId, "favorite check")
+          if(follower.followerId === uId){
+            // console.log("conditon string true")
+            resultFollow = true
+          }else{
+
+          }
+        })
+        // console.log(result, "result here")
+        return resultFollow
+      }
+      let userFave = favorites.filter(post =>
+        {
+          // console.log(post, "post console")
+          let postFave = favoriteCheck(post.following)
+          // console.log(postFave, "postFave")
+          return postFave
+        }
+      )
+       //filters through 1st array then
+      // console.log(result, "result")
+      // console.log(userFave, "userFave")
+      res.render('favorites.ejs', {
+        user : req.user,  //key-value pairs
+        posts: userFave   //post = result from DB
+      })
+    })
 });
+
 
 
 // PROFILE SECTION =========================
@@ -65,7 +102,7 @@ app.get('/profile', isLoggedIn, function(req, res) {
 app.get('/feed', function(req, res) {
     db.collection('posts').find().toArray((err, result) => {  //Find all posts then turn to array
       if (err) return console.log(err)
-      console.log(req.user)
+      // console.log(req.user)
       res.render('feed.ejs', {   //render /feed
         user : req.user,
         posts: result
@@ -76,7 +113,7 @@ app.get('/feed', function(req, res) {
 // INDIVIDUAL POST PAGE =========================
 app.get('/post/:human', function(req, res) {  //  /:human = query param
     let postId = ObjectId(req.params.human)   // postId = the queryParam unique number
-    console.log(postId);
+    // console.log(postId);
     db.collection('posts').find({_id: postId}).toArray((err, result) => {
       if (err) return console.log(err)
       res.render('post.ejs', {
@@ -91,7 +128,7 @@ app.post('/cannaPost', upload.single('file-to-upload'), (req, res, next) => {  /
   console.log(uId, "please")
   db.collection('posts').save({posterId: uId, caption: req.body.caption, likes: 0, likeCount: [], imgPath: 'images/uploads/' + req.file.filename, description: req.body.description, ingredients: req.body.ingredients, fave: "", following: []}, (err, result) => {
     if (err) return console.log(err)
-    console.log('saved to database')
+    // console.log('saved to database')
     res.redirect('/profile')
   })
 });
@@ -108,8 +145,8 @@ app.delete('/posts', isLoggedIn, (req, res) => {
 
   // let postId = ObjectId(req.params.id)
   db.collection('posts').findOneAndDelete({_id: ObjectId(req.body._id), posterId: uId}, (err, result) => {
-    console.log(req.body._id)
-    console.log(ObjectId(req.body._id))
+    // console.log(req.body._id)
+    // console.log(ObjectId(req.body._id))
     if (err) return res.send(500, err)
     if(result.value === null){
       res.send(404, "not found mike pennisi")
@@ -162,7 +199,7 @@ app.put('/posts', isLoggedIn, (req, res) => {
       if(req.body.follow){
         let following = results[0].following
         following.push({followerId: req.body.following})
-        console.log(following, "follows")
+        // console.log(following, "follows")
       }
 
       db.collection('posts')
@@ -179,7 +216,7 @@ app.put('/posts', isLoggedIn, (req, res) => {
         sort: {_id: -1},
         upsert: true
       }, (err, result) => {
-        console.log(result, "find me")
+        // console.log(result, "find me")
         if (err) return res.send(err)
         res.send(result)
       })
@@ -189,19 +226,20 @@ app.put('/unlike', (req, res) => {
   db.collection('posts')
   .find({_id: ObjectId(req.body._id)}).toArray((err, results) => {
     if (err) return console.log(err)
+    console.log(req.body.following, "here")
     let following = results[0].following
-    following.filter(function(item) {
-    if(item.followerId !== req.body.follow){
-      return {followerId: item.followerId}
-    }
-   })
-  console.log(results[0].following, "unfollow")
+    let removedFollower = following.filter(
+      follower => follower.followerId !== req.body.following
+   )
+   // console.log(following, "following")
+   console.log(removedFollower, "removed")
+  // console.log(results[0].following, "unfollow")
   db.collection('posts')
   .findOneAndUpdate({_id: ObjectId(req.body._id)}, {
 
     $set:{
       fave: "",
-      following: following
+      following: removedFollower
     },
     $inc: {
       likes: -1
@@ -298,16 +336,6 @@ function isLoggedIn(req, res, next) {   //Next???
     res.redirect('/');
 }
 
-//------questions to ask-----------------
-
-//What is cb? lines 9,12
-//What is next? line 62 && 130
-//Explain lines 7-16
-//How can we change the users prof pic
-//No put requests --delete, like...
-//Do we need a comment section (new collection) -extra functionality
-//
-//
 
 //-------extra functionality?-----------
 //comment section => plus new collection
