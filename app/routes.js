@@ -44,6 +44,9 @@ app.get('/terpene', function(req, res) {
 app.get('/infusion', function(req, res) {
     res.render('infusion.ejs');
 });
+app.get('/favorites', function(req, res) {
+    res.render('favorites.ejs');
+});
 
 
 // PROFILE SECTION =========================
@@ -62,6 +65,7 @@ app.get('/profile', isLoggedIn, function(req, res) {
 app.get('/feed', function(req, res) {
     db.collection('posts').find().toArray((err, result) => {  //Find all posts then turn to array
       if (err) return console.log(err)
+      console.log(req.user)
       res.render('feed.ejs', {   //render /feed
         user : req.user,
         posts: result
@@ -70,8 +74,8 @@ app.get('/feed', function(req, res) {
 });
 
 // INDIVIDUAL POST PAGE =========================
-app.get('/post/:zebra', function(req, res) {  //  /:zebra = query param
-    let postId = ObjectId(req.params.zebra)   // postId = the queryParam unique number
+app.get('/post/:human', function(req, res) {  //  /:human = query param
+    let postId = ObjectId(req.params.human)   // postId = the queryParam unique number
     console.log(postId);
     db.collection('posts').find({_id: postId}).toArray((err, result) => {
       if (err) return console.log(err)
@@ -84,7 +88,8 @@ app.get('/post/:zebra', function(req, res) {  //  /:zebra = query param
 //Create Post =========================================================================
 app.post('/cannaPost', upload.single('file-to-upload'), (req, res, next) => {  //one picture to post   //next????
   let uId = ObjectId(req.session.passport.user) // uId === the individual
-  db.collection('posts').save({posterId: uId, caption: req.body.caption, likes: 0, imgPath: 'images/uploads/' + req.file.filename, description: req.body.description, ingredients: req.body.ingredients}, (err, result) => {
+  console.log(uId, "please")
+  db.collection('posts').save({posterId: uId, caption: req.body.caption, likes: 0, likeCount: [], imgPath: 'images/uploads/' + req.file.filename, description: req.body.description, ingredients: req.body.ingredients, fave: "", following: []}, (err, result) => {
     if (err) return console.log(err)
     console.log('saved to database')
     res.redirect('/profile')
@@ -115,12 +120,91 @@ app.delete('/posts', isLoggedIn, (req, res) => {
 })
 
 //Update ===============================================================
+// db.posts.update(
+//   {
+//     "_id": ObjectId(req.session.passport.user),
+//     "likeCount": {"$ne": ObjectId(req.body.likeCount)}
+//   },
+//   {
+//     "$inc": { "likes": 1 },
+//     "$push": { "likeCount": ObjectId(req.body.likeCount)}
+//   }
+// )
+// db.posts.update(
+//   {
+//     "_id": ObjectId(req.session.passport.user),
+//     "likeCount": ObjectId(req.body.likeCount)
+//   },
+//   {
+//     "$inc": {"likes": -1},
+//     "$pull": {"likeCount": ObjectId(req.body.likeCount)}
+//   }
+// )
+// db.posts.find(
+//   {
+//     "_id": ObjectId(req.session.passport.user),
+//   },
+//   {
+//     "imgPath": 1,
+//     "likes": 1,
+//     "likeCount":{
+//       "$elemMatch": { "$eq": ObjectId(req.body.likeCount)}
+//     }
+//   }
+// )
 
-app.put('/posts', (req, res) => {
+
+app.put('/posts', isLoggedIn, (req, res) => {
+    db.collection('posts')
+    .find({_id: ObjectId(req.body._id)}).toArray((err, results) => {
+      if (err) return console.log(err)
+      let following = results[0].following
+      if(req.body.follow){
+        let following = results[0].following
+        following.push({followerId: req.body.following})
+        console.log(following, "follows")
+      }
+
+      db.collection('posts')
+      .findOneAndUpdate({_id: ObjectId(req.body._id)}, {
+
+        $set:{
+          fave: "liked",
+          following: following
+        },
+        $inc: {
+          likes: 1
+        }
+      }, {
+        sort: {_id: -1},
+        upsert: true
+      }, (err, result) => {
+        console.log(result, "find me")
+        if (err) return res.send(err)
+        res.send(result)
+      })
+  })
+})
+app.put('/unlike', (req, res) => {
+  db.collection('posts')
+  .find({_id: ObjectId(req.body._id)}).toArray((err, results) => {
+    if (err) return console.log(err)
+    let following = results[0].following
+    following.filter(function(item) {
+    if(item.followerId !== req.body.follow){
+      return {followerId: item.followerId}
+    }
+   })
+  console.log(results[0].following, "unfollow")
   db.collection('posts')
   .findOneAndUpdate({_id: ObjectId(req.body._id)}, {
+
+    $set:{
+      fave: "",
+      following: following
+    },
     $inc: {
-      likes: 1
+      likes: -1
     }
   }, {
     sort: {_id: -1},
@@ -130,7 +214,7 @@ app.put('/posts', (req, res) => {
     res.send(result)
   })
 })
-
+})
 
 // // Feed Update *********************************************
 //

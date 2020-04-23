@@ -1,5 +1,49 @@
 <%- include('header'); -%>
 <!-- demo-day start-->
 <h1>My Saved</h1>
+<!-- dish_area start  -->
+<div class="dish_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="dish_wrap d-flex">
+                    <div class="single_dish text-center">
+                        <div class="thumb">
+                            <img src="img/recepie/infused.png" alt="">
+                        </div>
+                        <h3>Recipes</h3>
+                        <p>Learn about the most common infusion options; from oils, butter, & extracts to alcohol.</p>
+                        <a href="/infusion">here</a>
+                    </div>
+                    <div class="single_dish text-center">
+                        <div class="thumb">
+                            <img src="img/recepie/dose.png" alt="">
+                        </div>
+                        <h3>Articles</h3>
+                        <p>A quick guide to calculating potency per serving. Learn how to create the perfect potency for any recipe.</p>
+                        <a href="/dose">here</a>
+                    </div>
+                    <div class="single_dish text-center">
+                        <div class="thumb">
+                            <img src="img/recepie/terpene.png" alt="">
+                        </div>
+                        <h3>Inspiration</h3>
+                        <p>Learn about terpene profiles and complimenting flavors! Flavor pairing recommendations for anny recipe.</p>
+                        <a href="/terpene">here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ dish_area start  -->
+<!--
+render DB collection
+make sure passing through following array
+fave page conditionally render posts if favorites contains userId
+  -->
+
+
+
 <!-- demo-day end -->
 <%- include('footer'); -%>

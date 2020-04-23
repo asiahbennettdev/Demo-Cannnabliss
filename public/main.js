@@ -6,22 +6,24 @@ Array.from(likes).forEach(function(element) {
         const imgPath = this.parentNode.parentNode.childNodes[3].innerText
         const _id = this.parentNode.parentNode.getAttribute("data-id")
         const caption = this.parentNode.parentNode.childNodes[5].innerText
-        // const likes = this.parentNode.parentNode.getAttribute("data-likes")
-        // console.log(likes)
-        fetch('posts', {
+        const likes = this.parentNode.parentNode.getAttribute("data-likes")
+        const followingId = this.parentNode.parentNode.getAttribute("data-following")
+        console.log(followingId, "follow")
+        console.log(element.classList, "here")
+        if(element.classList.contains("liked")){
+          element.classList.remove("liked")
+        fetch('unlike', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
             'imgPath': imgPath,
             '_id': _id,
             'caption': caption,
-            // 'likes': likes
+            'fave': "",
+            'following': "",
+            'follow': "false"
           })
         })
-        .then((response) => {
-        console.log('success1', response);
-        response.json()
-      })
         .then((data) => {
           console.log('Success:', data);
           window.location.reload(true)
@@ -29,8 +31,33 @@ Array.from(likes).forEach(function(element) {
           .catch((error) => {
           console.error('Error:', error);
           });
+        }else{
+          console.log("here again")
+          element.classList.add("liked")
+
+          fetch('posts', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              'imgPath': imgPath,
+              '_id': _id,
+              'caption': caption,
+              'fave':'liked',
+              'following': followingId,
+              'follow': "true"
+            })
+          })
+          .then((data) => {
+            console.log('Success:', data);
+            window.location.reload(true)
+          })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+        }
       });
 });
+
 // Array.from(likes).forEach(function(element) {
 //       element.addEventListener('click', function(){
 //         const imgPath = this.parentNode.parentNode.childNodes[3].innerText
@@ -94,12 +121,12 @@ Array.from(trash).forEach(function(element) {
       }else{
       const postElement = element.closest("li")
       postElement.remove()
-    //  window.location.reload()
+     // window.location.reload()
       }
     })
     .then(data => {
       console.log(data)
-      window.location.reload(true)
+      // window.location.reload(true)
     })
   });
 });

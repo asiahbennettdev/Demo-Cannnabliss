@@ -1,5 +1,5 @@
 {
-  "name": "node-authentication",
+  "name": "authentication",
   "main": "server.js",
   "dependencies": {
     "bcrypt-nodejs": "latest",
@@ -20,5 +20,24 @@
     "passport-google-oauth": "~1.0.0",
     "passport-local": "~1.0.0",
     "passport-twitter": "~1.0.4"
-  }
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "description": "## Project Scope Full stack cannabis recipe web application. Optimizations include user ability to login, like their favorite recipes, and submit personal recipes to the list with an image. Users will also be able to browse the blog, and learn about the medicinal purposes with cannabis intergrated with food.",
+  "version": "1.0.0",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asiahbennettdev/Demo-Cannnabliss.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asiahbennettdev/Demo-Cannnabliss/issues"
+  },
+  "homepage": "https://github.com/asiahbennettdev/Demo-Cannnabliss#readme"
 }
