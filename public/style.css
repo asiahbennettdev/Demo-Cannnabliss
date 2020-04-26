@@ -141,3 +141,31 @@ div.single_dish.text-center{
   padding: 20px;
   padding-left: 95px;
 }
+.login {
+  font-family: arial;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.topper{
+  background: #b1edc7;
+}
+.vision{
+  /* border: 1px solid black; */
+  height: 500px;
+  padding-top: 100px;
+}
+.mysaves{
+  font-family: arial;
+  font-size: 30px;
+}
+.beez{
+  height: 20px;
+  width: 10%;
+  font-size: 16px;
+  padding: 1.0rem .5rem;
+
+}
+a.btn.btn-default.btn-sm.beez{
+
+
+}
