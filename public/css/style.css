@@ -1992,7 +1992,7 @@ details summary {
 
 /* line 1, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_recipe_details.scss */
 .recepie_details_area {
-  padding-top: 200px;
+  padding-top: 100px;
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
@@ -2050,7 +2050,7 @@ details summary {
 .recepie_details_area .recepies_info h3 {
   font-size: 30px;
   color: #222222;
-  margin-bottom: 23px;
+  margin-bottom: -15px;
 }
 
 /* line 32, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_recipe_details.scss */
@@ -2793,12 +2793,18 @@ details summary {
 .breadcam_bg_6 {
   background-image: url(../img/banner/chalkk.jpg);
 }
+.breadcam_bg_7 {
+  background: black;
+}
+.breadcam_bg_7 h3 {
+  margin-top: -110px;
+}
 
 /* line 13, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_bradcam.scss */
 .bradcam_area {
   background-size: cover;
   background-position: bottom;
-  padding: 258px 0 148px 0;
+  padding: 258px 0 115px 0;
   background-repeat: no-repeat;
   position: relative;
   z-index: 0;

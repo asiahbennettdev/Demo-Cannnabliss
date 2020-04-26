@@ -6,7 +6,7 @@ img{
   height: 200px;
 }
 .feedPost {
-  border-radius: 5px solid black;
+  border: 5px solid red;
   /* height: 1000px; */
   width: 100%;
   float left;
@@ -29,9 +29,95 @@ div.recepies_info ul li img {
   height: 300px;
   border-radius: 10px;
 }
-div.recepies_text p {
+/* div.recepies_text p {
   margin-left: 70px;
-}
-/* .liked {
-  background: red;
 } */
+.prepTime{
+  /* border: 1px solid black; */
+  height: 40px;
+  width: 50%;
+}
+.prepTime-one, .prepTime-two{
+  /* border:1px solid red; */
+  height: 40px;
+  width: 49%;
+  float:left;
+
+}
+.prepTime-two{
+    text-align: right;
+}
+.shortDes{
+  border: 1px solid transparent;
+  height: 55px;
+  width: 50%;
+
+}
+.shortDes p {
+  font-size: 16px;
+}
+.prepTime-one span, .prepTime-two span {
+  font-size: 16px;
+}
+.feedPostColumn li a img{
+  width: 50%;
+}
+.feedPostColumn{
+  border: 1px solid green;
+}
+.feedPostColumn li
+{
+  padding-left: 500px;
+}
+div.recepies_info ul li h3{
+  margin-top: 10px;
+  margin-bottom: -15px;
+}
+.paragraph{
+  border: 1px solid transparent;
+  width: 180%;
+}
+/* div.bradcam_text.text-center h3{
+  margin-top: -150px;
+} */
+.posters{
+  border: 2px solid blue;
+}
+div.row.align-items-center{
+  padding: 50px;
+}
+div.recipes_info ul li h3 span{
+  font-size: 40px;
+}
+.headBottom-one img{
+  height: 5px;
+  width: 64%;
+  margin-top: 46px;
+}
+.submit-form{
+  /* border: 2px solid red; */
+  height: 1200px;
+  width: 200%;
+}
+.title{
+  /* border: 1px solid blue; */
+  width: 100%;
+  /* height: 500px; */
+  float:left;
+}
+.titleSub-one, .titleSub-two{
+  /* border: 1px solid green; */
+  width: 48%;
+  height: 150px;
+  float:left;
+}
+.fgg{
+  margin-left: 15px;
+}
+.titleSub-three, .titleSub-four{
+  /* border: 1px solid blue; */
+  height: 250px;
+  width: 48%;
+  float: left;
+  padding-left: 15px;
+}

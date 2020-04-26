@@ -126,7 +126,7 @@ app.get('/post/:human', function(req, res) {  //  /:human = query param
 app.post('/cannaPost', upload.single('file-to-upload'), (req, res, next) => {  //one picture to post   //next????
   let uId = ObjectId(req.session.passport.user) // uId === the individual
   console.log(uId, "please")
-  db.collection('posts').save({posterId: uId, caption: req.body.caption, likes: 0, likeCount: [], imgPath: 'images/uploads/' + req.file.filename, description: req.body.description, ingredients: req.body.ingredients, fave: "", following: []}, (err, result) => {
+  db.collection('posts').save({posterId: uId, caption: req.body.caption, likes: 0, likeCount: [], imgPath: 'images/uploads/' + req.file.filename, description: req.body.description, ingredients: req.body.ingredients, shortDescription: req.body.shortDescription, prep: req.body.prep, fave: "", following: []}, (err, result) => {
     if (err) return console.log(err)
     // console.log('saved to database')
     res.redirect('/profile')
@@ -137,6 +137,35 @@ app.post('/favorite', function(req, res){
   let postId = ObjectId(req.body.postId)
   let favorite = Favorite.create({likerId: likerId, postId: postId})
   favorite.save();
+})
+// New Category section================================================================
+app.post('/categories', function(req, res){
+  let catUser = ObjectId(req.session.passport.user)
+  let catName = req.body.catName
+  let category = Category.create({catUser: catUser, catName: catName})
+  category.save();
+})
+app.get('/categories', function(req, res){
+  let catUser = ObjectId(req.session.passport.user)
+    db.collection('categories').find({catUser: catUser}).toArray(function(err, result){
+      if(err){
+        console.log("not working")
+        return
+      }
+      res.body.cats = result
+    })
+})
+app.put('/addCat', function(req, res){
+  let catId = ObjectId(req.body.catId)// front end has catId feild HTML
+  let postId = ObjectId(req.body.postId)
+  db.collection('addCat').insertOne({catId: catId, postId:postId}, function(err, result){
+    if(err){
+      console.log("Error")
+      return
+      // either render ejs page || redirect to favorites
+    }
+    res.redirect('favorites.ejs')
+  })
 })
 // Delete==============================================================================
 

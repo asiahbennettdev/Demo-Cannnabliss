@@ -101,16 +101,51 @@
             </ul>
           <!-- <h2>Add a post</h2> -->
           <!-- IMAGE UPLOAD -->
+          <section class="submit-form">
           <form action="/cannaPost" enctype="multipart/form-data" method="post">
-            <div class="col-12">
-              <h4 class="contact-title subHeader">Recipe Title</h4>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <input type="text" name="caption" value="" placeholder="Post Title">
-                <!-- <input class="form-control" name="caption" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder = 'Recipe name'> -->
-              </div>
 
+            <section class="title">
+              <section class="titleSub-one">
+                <div class="col-12">
+                  <h4 class="contact-title subHeader">Recipe Title</h4>
+                </div>
+                <div class="form-group fgg">
+                  <input type="text" name="caption" value="" placeholder="Post Title">
+                </div>
+              </section>
+              <section class="titleSub-two">
+                <div class="col-12">
+                  <h4 class="contact-title subHeader">Cooking Time</h4>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <input type="text" name="prep" value="" placeholder="Cooking Time">
+                  <!-- <input class="form-control" name="caption" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder = 'Recipe name'> -->
+                  </div>
+                </section>
+            </section>
+
+<!-- decription -->
+            <section class="title">
+              <section class="titleSub-three">
+              <div class="col-12">
+                <h2 class="contact-title subHeader wawa">Description</h2>
+              </div>
+              <div class="form-group">
+                 <textarea name="shortDescription" rows="9" cols="80" placeholder="Short Description"></textarea>
+              </div>
+            </section>
+            <section class="titleSub-four">
+              <div class="col-12">
+                <h2 class="contact-title subHeader wawa">Ingredients</h2>
+              </div>
+              <div class="form-group">
+                <textarea type="text" name="ingredients" value=""rows="9" cols="80" placeholder="Ingredients"></textarea>
+              </div>
+              </section>
+            </section>
+            <section class="title">
+              <section class="titleSub-three">
              <div class="col-12">
                <h2 class="contact-title subHeader wawa">Instructions</h2>
              </div>
@@ -118,22 +153,21 @@
                 <textarea name="description" rows="9" cols="80" placeholder="Instructions"></textarea>
                  <!-- <textarea class="form-control w-100" name="description" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder = 'Type text here'></textarea> -->
              </div>
-
+             </section>
              <!-- <input type="text" name="description" value="" placeholder="Description"> -->
-             <div class="col-12">
-               <h2 class="contact-title subHeader wawa">Ingredients</h2>
-             </div>
-             <div class="form-group">
-               <textarea type="text" name="ingredients" value=""rows="9" cols="80" placeholder="Ingredients"></textarea>
-               <!-- <input type="text" name="ingredients" value="" placeholder="Ingredients"> -->
-               <!-- <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder = 'Enter Items'> -->
-             </div>
+             <section class="titleSub-four">
+
+
              <div class="col-12">
                <h2 class="contact-title subHeader wawa">Upload Photo</h2>
              </div>
              <input type="file" name="file-to-upload">
              <input type="submit" value="Upload">
+              </section>
+             </section>
+
            </form>
+        </section>
   </div>
   </section>
 <%- include('footer'); -%>

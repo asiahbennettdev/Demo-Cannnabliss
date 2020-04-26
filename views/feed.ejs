@@ -53,21 +53,36 @@
     </div>
     <!-- /bradcam_area  -->
     <!-- list -->
+
   <section class="feedPost">
     <ul>
     <% for(var i=0; i<posts.length; i++) {%>
+      <section class="feedPostRow">
+        <section class="feedPostColumn">
       <li data-id="<%= posts[i]._id%>" data-following="<%= user._id%>">
-        <a href="/post/<%= posts[i]._id%>">
-          <img src="<%= posts[i].imgPath%>">
-        </a>
+            <a href="/post/<%= posts[i]._id%>">
+              <img src="<%= posts[i].imgPath%>">
+            </a>
         <br>
-        <span><%= posts[i].caption %></span>
+        <section class="prepTime">
+          <section class="prepTime-one">
+            <span><%= posts[i].caption %></span>
+          </section>
+          <section class="prepTime-two">
+            <span>Time: <%= posts[i].prep %></span>
+          </section>
+        </section>
+        <section class="shortDes">
+          <p><%= posts[i].shortDescription %></p>
+        </section>
+        <!-- <p><%= posts[i].description %></p> -->
         <span><%= posts[i].likes %></span>
         <span><%= posts[i].likeCount %></span>
         <span><i class="fa fa-heart <%= posts[i].fave %>" aria-hidden="true"></i></span>
-
         <!-- <span><i class="fa fa-trash" aria-hidden="true"></i></span> -->
       </li>
+        </section>
+      </section>
     <% } %>
     </ul>
   </section>
