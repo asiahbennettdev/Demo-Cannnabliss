@@ -16,9 +16,8 @@
                                   <li><a href="/login">Login</a></li>
                                   <li><a href="/signup">Signup</a></li>
                                   <li><a href="/blog">Blog</a></li>
-                                  <li><a href="/recipes">Recipes</a></li>
                                   <li><a href="/faq">FAQ</a></li>
-                                  <li><a href="/feed">Submit</a></li>
+                                  <li><a href="/feed">Feed</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -37,13 +36,15 @@
 </header>
 <!-- header-end -->
 !-- bradcam_area  -->
-<div class="bradcam_area breadcam_bg_5">
+<div class="bradcam_area breadcam_bg_7">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
                 <div class="bradcam_text text-center">
-                    <h3>Submit Recipe</h3>
-                    <h4 class="subHead">Share your favorite cannabis foods</h4>
+                    <h3>Profile Page</h3>
+                    <section class="headBottom-one">
+                      <img src="../img/banner/liner.jpg" alt="">
+                    </section>
                 </div>
             </div>
         </div>
@@ -51,7 +52,7 @@
 </div>
   <div class="container">
       <div class="page-header text-center">
-          <h1>My Profile Recipe Page</h1>
+          <h1><strong>Welcome</strong>: <%= user.local.email %></h1>
       </div>
       <div class="row">
           <!-- LOCAL INFORMATION -->
@@ -73,13 +74,14 @@
                       <a href="/unlink/local" class="btn btn-default">Delete Profile</a>
                   <% } else { %>
                       <a href="/connect/local" class="btn btn-default">Connect Local</a>
-                  <% } %>
-                  <a href="/logout" class="btn btn-default btn-sm">Logout</a> -->
+                  <% } %> -->
+                  <h4>My Favorites</h4>
+                  <a href="/favorites" class="btn btn-default btn-sm">Saved</a>
+                  <a href="/logout" class="btn btn-default btn-sm">Logout</a>
                   <!-- profile IMAGE UPLOAD -->
               </div>
           </div>
-          <h4>My Favorites</h4>
-            <a href="/favorites">Saved</a>
+
           <section class="contact-section section_padding">
           <div class="col-sm-6">
             <!-- <h3>My Uploaded Recipe Posts</h3> -->

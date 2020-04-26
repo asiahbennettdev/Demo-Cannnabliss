@@ -6,7 +6,7 @@ img{
   height: 200px;
 }
 .feedPost {
-  border: 5px solid red;
+  /* border: 5px solid red; */
   /* height: 1000px; */
   width: 100%;
   float left;
@@ -62,9 +62,9 @@ div.recepies_info ul li img {
 .feedPostColumn li a img{
   width: 50%;
 }
-.feedPostColumn{
+/* .feedPostColumn{
   border: 1px solid green;
-}
+} */
 .feedPostColumn li
 {
   padding-left: 500px;
@@ -120,4 +120,24 @@ div.recipes_info ul li h3 span{
   width: 48%;
   float: left;
   padding-left: 15px;
+}
+a.thumb img{
+  border-radius: 50%;
+  margin-left: -42px;
+  height: 250px;
+  width: 143%;
+}
+div.single_dish.text-center{
+  width: 70%;
+  padding-top: 90px;
+}
+.postFave{
+  /* border: 3px solid blue; */
+}
+.lilili{
+  /* border: 1px solid red; */
+  width: 33%;
+  float:left;
+  padding: 20px;
+  padding-left: 95px;
 }
