@@ -186,14 +186,14 @@ app.put('/addCat', function(req, res){
 
 app.delete('/posts', isLoggedIn, (req, res) => {
   let uId = ObjectId(req.session.passport.user)
-
+  // console.log(uId, "userID")
   // let postId = ObjectId(req.params.id)
   db.collection('posts').findOneAndDelete({_id: ObjectId(req.body._id), posterId: uId}, (err, result) => {
-    // console.log(req.body._id)
-    // console.log(ObjectId(req.body._id))
+    console.log(req.body._id, "postID")
+    console.log(req.body, "body")
     if (err) return res.send(500, err)
     if(result.value === null){
-      res.send(404, "not found mike pennisi")
+      res.send(404, "not found")
       return
     }
     res.send('Message deleted!')
