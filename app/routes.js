@@ -44,6 +44,10 @@ app.get('/terpene', function(req, res) {
 app.get('/infusion', function(req, res) {
     res.render('infusion.ejs');
 });
+app.get('/public', function(req, res) {
+    res.render('public.ejs');
+});
+
 app.get('/favorites', isLoggedIn, function(req, res) {
     let uId = ObjectId(req.session.passport.user).toString()
     // console.log(uId, "ID")  //uId = unique id from passport
@@ -109,6 +113,17 @@ app.get('/feed', function(req, res) {
       })
     })
 });
+// PUBLIC FEED PAGE =======================
+app.get('/public', function(req, res) {
+    db.collection('posts').find().toArray((err, result) => {  //Find all posts then turn to array
+      if (err) return console.log(err)
+      // console.log(req.user)
+      res.render('public.ejs', {   //render /feed
+        // user : req.user,
+        posts: result
+      })
+    })
+});
 
 // INDIVIDUAL POST PAGE =========================
 app.get('/post/:human', function(req, res) {  //  /:human = query param
@@ -123,7 +138,7 @@ app.get('/post/:human', function(req, res) {  //  /:human = query param
 });
 
 //Create Post =========================================================================
-app.post('/cannaPost', upload.single('file-to-upload'), (req, res, next) => {  //one picture to post   //next????
+app.post('/cannaPost', upload.single('file-to-upload'), (req, res, next) => {  //one picture to post
   let uId = ObjectId(req.session.passport.user) // uId === the individual
   console.log(uId, "please")
   db.collection('posts').save({posterId: uId, caption: req.body.caption, likes: 0, likeCount: [], imgPath: 'images/uploads/' + req.file.filename, description: req.body.description, ingredients: req.body.ingredients, shortDescription: req.body.shortDescription, prep: req.body.prep, fave: "", following: []}, (err, result) => {

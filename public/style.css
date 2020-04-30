@@ -34,21 +34,28 @@ div.recepies_info ul li img {
 } */
 .prepTime{
   /* border: 1px solid black; */
+  border-radius: 3px;
   height: 40px;
   width: 50%;
 }
 .prepTime-one, .prepTime-two{
   /* border:1px solid red; */
   height: 40px;
-  width: 49%;
+  width: 50%;
   float:left;
 
 }
 .prepTime-two{
     text-align: right;
 }
+.prepTimes{
+  /* border: 1px solid black; */
+  border-radius: 3px;
+  /* height: 200px; */
+  width: 100%;
+}
 .shortDes{
-  border: 1px solid transparent;
+  /* border: 1px solid blue; */
   height: 55px;
   width: 50%;
 
@@ -157,6 +164,7 @@ div.single_dish.text-center{
 .mysaves{
   font-family: arial;
   font-size: 30px;
+  padding-left: 15px;
 }
 .beez{
   height: 20px;
@@ -166,6 +174,33 @@ div.single_dish.text-center{
 
 }
 a.btn.btn-default.btn-sm.beez{
-
-
+}
+.frontInfo{
+  margin-top:40px;
+}
+.recProf{
+  border: 2px solid gainsboro;
+  height: 600px;
+  width: 32%;
+  float: left;
+  padding: 20px;
+  margin-left: 1%;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.recProf section p strong{
+  color: #ffc000;
+}
+.recProff{
+  border: 2px solid blue;
+  height: 1000px;
+  width: 100%;
+  float:left;
+}
+div.page-header.text-center h1 {
+  padding-right: 742px;
+  font-family: arial;
+}
+.feedBody{
+  background: antiquewhite;
 }

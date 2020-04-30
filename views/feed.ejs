@@ -1,6 +1,6 @@
 <%- include('header'); -%>
 
-<body>
+<body class="feedBody">
     <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area">
@@ -40,7 +40,7 @@
     <!-- header-end -->
     <!-- bradcam_area  -->
 
-    <div class="bradcam_area breadcam_bg_3">
+    <div class="bradcam_area breadcam_bg_7">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -54,14 +54,15 @@
     </div>
     <!-- /bradcam_area  -->
     <!-- list -->
-    <a href="/profile">Return to Profile</a>
-    <a href="/feed">Return to Feed</a>
+    <a href="/profile" class="line_btn btn_so">Return to Profile</a>
+    <a href="/feed" class="line_btn btn_so">Return to Feed</a>
   <section class="feedPost">
     <ul>
     <% for(var i=0; i<posts.length; i++) {%>
       <section class="feedPostRow">
         <section class="feedPostColumn">
-      <li data-id="<%= posts[i]._id%>" data-following="<%= user._id%>">
+      <li data-id="<%= posts[i]._id%>" data-following="<%= user._id%>"> <!-- Remove data-following: public to view feed in UserFeedPage -->
+            <section class="prepTimes">
             <a href="/post/<%= posts[i]._id%>">
               <img src="<%= posts[i].imgPath%>">
             </a>
@@ -76,6 +77,7 @@
         </section>
         <section class="shortDes">
           <p><%= posts[i].shortDescription %></p>
+        </section>
         </section>
         <!-- <p><%= posts[i].description %></p> -->
         <span><%= posts[i].likes %></span>

@@ -75,9 +75,9 @@
                   <% } else { %>
                       <a href="/connect/local" class="btn btn-default">Connect Local</a>
                   <% } %> -->
-                  <h4 class="mysaves">My Favorites: <a href="/favorites" class="beez">Saved</a></h4>
-
-                  <a href="/logout" class="beez">Logout</a>
+                  <h4 class="mysaves">My Favorites: </h4>
+                  <a href="/favorites" class="line_btn">Saved</a>
+                  <a href="/logout" class="line_btn">Logout</a>
                   <!-- profile IMAGE UPLOAD -->
               </div>
           </div>
@@ -85,25 +85,37 @@
           <section class="contact-section section_padding">
           <div class="col-sm-6">
             <!-- <h3>My Uploaded Recipe Posts</h3> -->
-            <ul>
-            <% for(var i=0; i<posts.length; i++) {%>
-              <li data-id="<%= posts[i]._id%>">
-                <a href="/post/<%= posts[i]._id%>">
-                  <img src="<%= posts[i].imgPath%>">
-                </a>
-                <span><%= posts[i].caption %></span>
-                <span><%= posts[i].likes %></span>
-                <span><%= posts[i].likeCount %></span>
-                <p><%= posts[i].description %></p>
-                <p><%= posts[i].ingredients %></p>
-                <span><i class="fa fa-heart" aria-hidden="true"></i></span>
-                <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-              </li>
-            <% } %>
-            </ul>
+
           <!-- <h2>Add a post</h2> -->
           <!-- IMAGE UPLOAD -->
           <section class="submit-form">
+            <ul>
+              <% for(var i=0; i<posts.length; i++) {%>
+                <li data-id="<%= posts[i]._id%>">
+                  <section class="recProf">
+                  <div class="recepie_thumb">
+                    <a href="/post/<%= posts[i]._id%>">
+                      <img src="<%= posts[i].imgPath%>" width="75%">
+                    </a>
+                  </div>
+                  <span><%= posts[i].caption %></span>
+                  <span><%= posts[i].likes %></span>
+                  <span><%= posts[i].likeCount %></span>
+                  <span><i class="fa fa-heart" aria-hidden="true"></i></span>
+                  <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+                  <section>
+                    <p><%= posts[i].shortDescription %></p>
+                  </section>
+                  <section>
+                    <p><strong>Cooking Time: </strong><%= posts[i].prep %></p>
+                  </section>
+                  </section>
+                 </li>
+                <% } %>
+              </ul>
+
+
+
           <form action="/cannaPost" enctype="multipart/form-data" method="post">
 
             <section class="title">

@@ -763,12 +763,31 @@ details summary {
   color: #000000;
   border: 1px solid #ffc000;
   text-transform: capitalize;
-  padding: 13px 34px;
+  padding: 1px 34px;
+  padding-top: 10px;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.btn_so{
+  display: inline-block;
+  font-size: 13px;
+  color: #000000;
+  border: 1px solid #ffc000;
+  text-transform: capitalize;
+  padding: 1px 34px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-top: 2px;
 }
 
 /* line 230, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_btn.scss */
