@@ -55,32 +55,22 @@ app.get('/favorites', isLoggedIn, function(req, res) {
       if (err) return console.log(err)
       let favorites = result
       function favoriteCheck(followArr){
-        // console.log(followArr, "array")
         let resultFollow
         let saved = followArr.forEach(follower => {
-          // console.log(follower.followerId, "followID")
-          // console.log(typeof uId, "favorite check")
           if(follower.followerId === uId){
             // console.log("conditon string true")
             resultFollow = true
           }else{
-
           }
         })
-        // console.log(result, "result here")
         return resultFollow
       }
       let userFave = favorites.filter(post =>
         {
-          // console.log(post, "post console")
           let postFave = favoriteCheck(post.following)
-          // console.log(postFave, "postFave")
           return postFave
-        }
-      )
+        })
        //filters through 1st array then
-      // console.log(result, "result")
-      // console.log(userFave, "userFave")
       res.render('favorites.ejs', {
         user : req.user,  //key-value pairs
         posts: userFave   //post = result from DB
