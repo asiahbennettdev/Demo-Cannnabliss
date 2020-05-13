@@ -8,7 +8,7 @@ module.exports = function(app, passport, db, multer, ObjectId) {
 // Make a Var for the storing of imgs => multer.(multer Method?)
 var storage = multer.diskStorage({
 
-    destination: (req, file, cb) => {    //What is cb? ... Maybe filepath
+    destination: (req, file, cb) => {    //Maybe filepath
       cb(null, 'public/images/uploads')
     },
     filename: (req, file, cb) => {
